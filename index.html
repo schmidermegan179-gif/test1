@@ -1,16 +1,15 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>你的站点名｜清晰克制的单页落地页</title>
-  <meta name="description" content="用更清晰、克制的方式介绍你的页面：内容范围、功能入口、规则边界与常见问题。" />
+  <title>사이트 이름 | 명확하고 절제된 랜딩 페이지</title>
+  <meta name="description" content="서비스 범위, 기능, 이용 규칙, FAQ를 한 페이지에서 명확하게 안내합니다." />
   <style>
     :root{
       --bg:#0b1220;
       --panel:#0f1b33;
       --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
       --text:#e6edf7;
       --muted: rgba(230,237,247,.72);
       --line: rgba(255,255,255,.12);
@@ -21,8 +20,8 @@
       --radius: 18px;
       --radius2: 24px;
       --max: 1120px;
-      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC",
-              "Hiragino Sans GB", "Microsoft YaHei", Arial, "Noto Sans CJK SC", "Noto Sans", sans-serif;
+      --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+              "Noto Sans KR", "Malgun Gothic", sans-serif;
     }
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
@@ -36,7 +35,6 @@
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
 
-    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -49,12 +47,11 @@
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      font-weight:900; letter-spacing:.2px;
+      font-weight:900;
     }
     .logo{
       width:34px; height:34px; border-radius:12px;
       background: linear-gradient(135deg, rgba(98,168,255,.95), rgba(154,209,255,.9));
-      box-shadow: 0 10px 25px rgba(98,168,255,.25);
     }
     .menu{ display:flex; gap:18px; align-items:center; }
     .menu a{
@@ -62,486 +59,205 @@
       padding:8px 10px; border-radius:12px;
     }
     .menu a:hover{ color:var(--text); background:rgba(255,255,255,.06); }
-    .cta{ display:flex; gap:10px; align-items:center; }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      gap:8px; padding:10px 14px; border-radius:14px;
+      padding:10px 14px; border-radius:14px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:900; font-size:14px;
+      font-weight:800; font-size:14px;
     }
-    .btn:hover{ background: rgba(255,255,255,.09); }
     .btn.primary{
       border-color: rgba(98,168,255,.35);
       background: linear-gradient(135deg, rgba(98,168,255,.95), rgba(154,209,255,.9));
       color:#0a1020;
     }
-    .btn.primary:hover{ filter:brightness(1.03); }
-    .hamburger{
-      display:none; width:42px; height:42px; border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06); color:var(--text);
-    }
-    .mobilePanel{
-      display:none; padding:10px 0 18px; border-top:1px solid var(--line);
-    }
-    .mobilePanel a{
-      display:block; padding:12px 10px; border-radius:14px; color:var(--muted);
-      font-weight:900;
-    }
-    .mobilePanel a:hover{ background: rgba(255,255,255,.06); color:var(--text); }
 
-    /* Hero */
-    header.hero{ padding:72px 0 24px; }
+    header.hero{ padding:80px 0 40px; }
     .heroGrid{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; align-items:stretch;
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:24px;
     }
     .heroCard{
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border-radius: var(--radius2);
-      box-shadow: var(--shadow);
       padding:28px;
-      position:relative;
-      overflow:hidden;
-    }
-    .heroCard:before{
-      content:""; position:absolute; inset:-2px;
-      background: radial-gradient(700px 250px at 20% 0%, rgba(98,168,255,.20), transparent 60%);
-      pointer-events:none;
-    }
-    .tag{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; border-radius:999px;
-      border:1px solid rgba(98,168,255,.35);
-      background: rgba(98,168,255,.12);
-      color: rgba(230,237,247,.92);
-      font-weight:900; font-size:13px;
+      background: rgba(255,255,255,.04);
     }
     .h1{
-      margin:14px 0 10px; font-size:44px; line-height:1.05;
-      letter-spacing:-.6px;
+      font-size:42px; line-height:1.2;
+      margin:20px 0;
     }
-    .lead{ color:var(--muted); font-size:16px; line-height:1.7; margin:0 0 18px; }
-    .heroActions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
-    .checks{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; }
-    .check{
-      display:flex; align-items:center; gap:10px;
-      border:1px solid var(--line); background: rgba(255,255,255,.04);
-      padding:10px 12px; border-radius:14px; color:var(--muted);
-      font-weight:900; font-size:13px;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px; background: var(--ok);
-      box-shadow: 0 0 0 6px rgba(68,209,157,.12);
-    }
-    .statsCard{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(15,27,51,.9), rgba(255,255,255,.03));
-      border-radius: var(--radius2);
-      padding:22px;
-      box-shadow: var(--shadow);
-    }
-    .statsTitle{ font-weight:900; margin:0 0 10px; letter-spacing:.2px; }
-    .stat{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius: 16px;
-      padding:14px 14px;
-      display:flex; align-items:baseline; justify-content:space-between;
-      margin-bottom:12px;
-    }
-    .stat b{ font-size:20px; }
-    .stat span{ color:var(--muted); font-weight:900; font-size:13px; }
+    .lead{ color:var(--muted); line-height:1.7; }
 
-    /* Sections */
-    section{ padding:56px 0; }
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
-      margin-bottom:18px;
-    }
-    .sectionTitle h2{ margin:0; font-size:28px; letter-spacing:-.2px; }
-    .sectionTitle p{ margin:0; color:var(--muted); max-width:520px; line-height:1.6; }
-
-    .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    .grid2{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    section{ padding:60px 0; }
+    h2{ font-size:28px; margin-bottom:20px; }
     .card{
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       border-radius: var(--radius);
-      padding:18px;
+      padding:20px;
+      margin-bottom:16px;
     }
-    .card h3{ margin:0 0 8px; font-size:16px; letter-spacing:.1px; }
-    .card p{ margin:0; color:var(--muted); line-height:1.7; font-size:14px; }
-    .pillRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
-    .pill{
-      padding:7px 10px; border-radius:999px; border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:rgba(230,237,247,.86);
-      font-weight:900; font-size:12px;
-    }
+    .card p{ color:var(--muted); line-height:1.7; }
 
-    .callout{
-      border:1px solid rgba(98,168,255,.25);
-      background: rgba(98,168,255,.10);
-      border-radius: var(--radius2);
-      padding:18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
-    }
-    .callout h3{ margin:0; font-size:18px; }
-    .callout p{ margin:6px 0 0; color:var(--muted); }
-
-    /* Rules */
-    .ruleList{ display:grid; gap:12px; }
-    .rule{
-      display:flex; gap:12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius: var(--radius);
-      padding:14px;
-      align-items:flex-start;
-    }
-    .num{
-      width:30px; height:30px; border-radius:12px;
-      background: rgba(98,168,255,.14);
-      border:1px solid rgba(98,168,255,.35);
-      display:flex; align-items:center; justify-content:center;
-      font-weight:900;
-      flex: 0 0 auto;
-    }
-
-    /* FAQ */
     details{
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       border-radius: var(--radius);
-      padding:14px 14px;
+      padding:14px;
+      margin-bottom:12px;
     }
     summary{
       cursor:pointer;
-      font-weight:900;
-      list-style:none;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      font-weight:800;
     }
-    summary::-webkit-details-marker{ display:none; }
-    .chev{ opacity:.8; transition:transform .15s ease; }
-    details[open] .chev{ transform:rotate(180deg); }
-    details .ans{ color:var(--muted); line-height:1.7; margin-top:10px; font-size:14px; }
 
-    /* Footer */
-    .footer{
-      padding:32px 0 44px; border-top:1px solid var(--line);
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
       color:var(--muted);
+      font-size:14px;
     }
-    .footerGrid{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;
-    }
-    .links{ display:flex; gap:12px; flex-wrap:wrap; }
-    .links a{ color:var(--muted); font-weight:900; font-size:13px; }
-    .links a:hover{ color:var(--text); }
-    .small{ font-size:13px; line-height:1.7; }
 
     @media (max-width: 980px){
       .heroGrid{ grid-template-columns:1fr; }
-      .grid3{ grid-template-columns:1fr; }
-      .grid2{ grid-template-columns:1fr; }
-      .h1{ font-size:38px; }
-      .menu, .cta{ display:none; }
-      .hamburger{ display:inline-flex; align-items:center; justify-content:center; }
-      .mobilePanel.show{ display:block; }
+      .menu{ display:none; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#top">
-          <span class="logo" aria-hidden="true"></span>
-          <span>你的站点名</span>
-        </a>
 
-        <nav class="menu" aria-label="主导航">
-          <a href="#about">介绍</a>
-          <a href="#features">功能</a>
-          <a href="#rules">规范</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-
-        <div class="cta">
-          <a class="btn" href="#features">了解更多</a>
-
-          <!-- ✅ 把这里换成你的入口链接 -->
-          <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">立即进入</a>
-        </div>
-
-        <button class="hamburger" id="hamburger" aria-label="打开菜单">☰</button>
+<div class="topbar">
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <span class="logo"></span>
+        <span>사이트 이름</span>
       </div>
-
-      <div class="mobilePanel" id="mobilePanel">
-        <a href="#about">介绍</a>
-        <a href="#features">功能</a>
-        <a href="#rules">规范</a>
+      <nav class="menu">
+        <a href="#about">소개</a>
+        <a href="#features">기능</a>
+        <a href="#rules">이용 규칙</a>
         <a href="#faq">FAQ</a>
-        <a href="https://example.com" target="_blank" rel="noopener">立即进入</a>
-      </div>
+      </nav>
+      <a class="btn primary" href="https://example.com" target="_blank">바로 시작하기</a>
     </div>
   </div>
+</div>
 
-  <!-- Hero -->
-  <header class="hero" id="top">
-    <div class="wrap">
-      <div class="heroGrid">
-        <div class="heroCard">
-          <div class="tag">📌 信息清晰 · 表达克制 · 入口明确</div>
-          <h1 class="h1">把你要做的事<br/>讲得更清楚一点</h1>
-          <p class="lead">
-            这是一个单页说明型落地页：用固定结构把「你提供什么」「适合谁」「如何开始」「边界与规则」一次讲明白，
-            让用户更少猜测、更少来回问。
-          </p>
-
-          <div class="heroActions">
-            <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">现在就进入</a>
-            <a class="btn" href="#about">先看介绍</a>
-          </div>
-
-          <div class="checks">
-            <div class="check"><span class="dot"></span> 一页讲清楚核心信息</div>
-            <div class="check"><span class="dot"></span> 手机/电脑自适应</div>
-            <div class="check"><span class="dot"></span> 规则 + FAQ 降低沟通</div>
-          </div>
-        </div>
-
-        <aside class="statsCard" aria-label="数据概览">
-          <p class="statsTitle">概览数据</p>
-
-          <!-- ✅ 这些数字你自己换成真实的 -->
-          <div class="stat"><span>内容条目</span><b>1,000+</b></div>
-          <div class="stat"><span>累计访问</span><b>30k+</b></div>
-          <div class="stat"><span>近期更新</span><b>每周</b></div>
-
-          <div class="card" style="padding:14px;">
-            <h3 style="margin:0 0 6px;">建议</h3>
-            <p style="margin:0;color:var(--muted);line-height:1.7;font-size:14px;">
-              数据不要夸张，保持“可解释”，会更像稳定运营的站点。
-            </p>
-          </div>
-        </aside>
-      </div>
+<header class="hero">
+  <div class="wrap heroGrid">
+    <div class="heroCard">
+      <h1 class="h1">필요한 정보를<br>한 페이지에 정리했습니다</h1>
+      <p class="lead">
+        이 페이지는 서비스 소개, 주요 기능, 이용 범위, 자주 묻는 질문을
+        한 번에 확인할 수 있도록 구성된 설명형 랜딩 페이지입니다.
+      </p>
+      <br>
+      <a class="btn primary" href="https://example.com" target="_blank">지금 이용하기</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- About -->
-  <section id="about">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>这页是什么</h2>
-        <p>用三块说明你服务的对象、提供的内容、以及大致边界。</p>
-      </div>
+<section id="about">
+  <div class="wrap">
+    <h2>이 페이지는 무엇인가요?</h2>
 
-      <div class="grid3">
-        <div class="card">
-          <h3>给第一次来的用户</h3>
-          <p>先告诉他这里能解决什么问题，建议从哪里开始，避免把信息堆在一起。</p>
-          <div class="pillRow">
-            <span class="pill">入门指引</span>
-            <span class="pill">减少试错</span>
-            <span class="pill">路径清晰</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>给想快速定位的人</h3>
-          <p>用分类与模块化结构，把信息按主题拆开，让用户更快找到对应入口。</p>
-          <div class="pillRow">
-            <span class="pill">分类</span>
-            <span class="pill">模块</span>
-            <span class="pill">索引</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>给重视可信度的人</h3>
-          <p>把规则与边界写清楚，让页面更像“长期运营”的说明页，而不是短期广告。</p>
-          <div class="pillRow">
-            <span class="pill">边界明确</span>
-            <span class="pill">更可信</span>
-            <span class="pill">易维护</span>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>처음 방문한 사용자에게</h3>
+      <p>어떤 정보를 제공하는지, 어디서부터 시작해야 하는지 명확하게 안내합니다.</p>
     </div>
-  </section>
 
-  <!-- Features -->
-  <section id="features">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>你能获得什么</h2>
-        <p>用 2×2 结构说明核心能力：入口、内容、指引、支持方式。</p>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <h3>清晰入口</h3>
-          <p>把最重要的“下一步动作”放到按钮里，用户不用翻半天。</p>
-          <div class="pillRow">
-            <span class="pill">主入口</span>
-            <span class="pill">备用入口</span>
-            <span class="pill">可追踪</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>结构化内容</h3>
-          <p>按主题整理：新手、进阶、问题排查、更新说明等，减少重复咨询。</p>
-          <div class="pillRow">
-            <span class="pill">主题分区</span>
-            <span class="pill">可扩展</span>
-            <span class="pill">更新清晰</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>操作指引</h3>
-          <p>把流程写成步骤：做什么、注意什么、遇到问题怎么处理。</p>
-          <div class="pillRow">
-            <span class="pill">步骤化</span>
-            <span class="pill">少误解</span>
-            <span class="pill">可复用</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>支持与说明</h3>
-          <p>告诉用户什么时候能联系到你、通过什么方式、以及响应范围。</p>
-          <div class="pillRow">
-            <span class="pill">联系方式</span>
-            <span class="pill">响应时间</span>
-            <span class="pill">范围说明</span>
-          </div>
-        </div>
-      </div>
-
-      <div style="height:18px"></div>
-      <div class="callout">
-        <div>
-          <h3>准备好入口链接了吗？</h3>
-          <p>把页面里的 <b>https://example.com</b> 改成你的实际入口，就能直接用。</p>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="#faq">先看 FAQ</a>
-          <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">立即进入</a>
-        </div>
-      </div>
+    <div class="card">
+      <h3>빠르게 찾고 싶은 사용자에게</h3>
+      <p>구조화된 메뉴와 구분된 섹션을 통해 필요한 내용을 빠르게 찾을 수 있습니다.</p>
     </div>
-  </section>
 
-  <!-- Rules -->
-  <section id="rules">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>使用规范与边界</h2>
-        <p>把“允许/不允许”“隐私”“争议处理”写清楚，会显得更稳。</p>
-      </div>
-
-      <div class="ruleList">
-        <div class="rule">
-          <div class="num">1</div>
-          <div>
-            <b>尊重交流</b>
-            <div class="small">保持友好表达，避免辱骂/引战；尽量提供有效信息帮助定位问题。</div>
-          </div>
-        </div>
-
-        <div class="rule">
-          <div class="num">2</div>
-          <div>
-            <b>内容相关</b>
-            <div class="small">优先讨论与本站主题相关内容；广告与无关信息可能会被折叠或移除。</div>
-          </div>
-        </div>
-
-        <div class="rule">
-          <div class="num">3</div>
-          <div>
-            <b>隐私与安全</b>
-            <div class="small">不要公开敏感信息（账号、验证码、个人资料等）；联系请走私信/表单/邮箱。</div>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>신뢰를 중요하게 생각하는 사용자에게</h3>
+      <p>이용 규칙과 서비스 범위를 명확히 하여 안정적인 운영 방식을 보여줍니다.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>常见问题</h2>
-        <p>用短问题 + 直给答案，减少反复沟通成本。</p>
-      </div>
+<section id="features">
+  <div class="wrap">
+    <h2>제공 기능</h2>
 
-      <div class="grid2">
-        <details>
-          <summary>这页适合做什么用途？ <span class="chev">▾</span></summary>
-          <div class="ans">适合做“说明型落地页”：介绍服务/社区/资源集合，提供入口、规则、FAQ 和联系信息。</div>
-        </details>
-
-        <details>
-          <summary>我怎么部署到 GitHub Pages？ <span class="chev">▾</span></summary>
-          <div class="ans">把文件命名为 <b>index.html</b> 放在仓库根目录，然后 Settings → Pages 选择 main / root。</div>
-        </details>
-
-        <details>
-          <summary>我能加二维码或图片吗？ <span class="chev">▾</span></summary>
-          <div class="ans">可以。上传图片到仓库（如 images/），然后在页面里用 &lt;img&gt; 引入即可。</div>
-        </details>
-
-        <details>
-          <summary>能做成多页（隐私/条款）吗？ <span class="chev">▾</span></summary>
-          <div class="ans">可以新建 privacy.html / terms.html / disclaimer.html，再在页脚链接过去。</div>
-        </details>
-      </div>
+    <div class="card">
+      <h3>명확한 접근 경로</h3>
+      <p>가장 중요한 기능으로 바로 이동할 수 있는 버튼을 제공합니다.</p>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footerGrid">
-        <div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <span class="logo" aria-hidden="true"></span>
-            <b style="color:var(--text);">你的站点名</b>
-          </div>
-          <div class="small">
-            联系邮箱：<a href="mailto:contact@example.com">contact@example.com</a><br/>
-            响应时间：工作日 10:00 - 17:00（节假日顺延）
-          </div>
-        </div>
-
-        <div class="links" aria-label="政策链接">
-          <a href="privacy.html">隐私政策</a>
-          <a href="terms.html">使用条款</a>
-          <a href="disclaimer.html">免责声明</a>
-          <a href="#top">回到顶部</a>
-        </div>
-      </div>
-
-      <div style="height:14px"></div>
-      <div class="small">© <span id="year"></span> 你的站点名。All rights reserved.</div>
+    <div class="card">
+      <h3>구조화된 정보</h3>
+      <p>주제별로 정리된 콘텐츠를 통해 이해도를 높입니다.</p>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const hamburger = document.getElementById('hamburger');
-    const panel = document.getElementById('mobilePanel');
-    hamburger?.addEventListener('click', () => panel.classList.toggle('show'));
-    panel?.addEventListener('click', (e) => { if (e.target.tagName === 'A') panel.classList.remove('show'); });
-  </script>
+    <div class="card">
+      <h3>단계별 안내</h3>
+      <p>복잡한 절차를 단계별로 정리하여 혼란을 줄입니다.</p>
+    </div>
+
+    <div class="card">
+      <h3>지원 및 문의</h3>
+      <p>문의 방법과 응답 시간을 명확히 안내합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <h2>이용 규칙</h2>
+
+    <div class="card">
+      <p><strong>1. 상호 존중</strong><br>
+      모든 사용자는 서로를 존중하는 태도로 소통해야 합니다.</p>
+    </div>
+
+    <div class="card">
+      <p><strong>2. 관련 내용 유지</strong><br>
+      사이트 주제와 관련된 내용만 게시해 주세요.</p>
+    </div>
+
+    <div class="card">
+      <p><strong>3. 개인정보 보호</strong><br>
+      민감한 정보는 공개하지 마세요.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>자주 묻는 질문</h2>
+
+    <details>
+      <summary>이 페이지는 어떤 용도인가요?</summary>
+      <p>서비스 안내 및 정보 제공을 위한 설명형 랜딩 페이지입니다.</p>
+    </details>
+
+    <details>
+      <summary>GitHub Pages에 어떻게 배포하나요?</summary>
+      <p>파일명을 index.html로 저장한 후 저장소 루트에 업로드하세요.</p>
+    </details>
+
+    <details>
+      <summary>추가 페이지를 만들 수 있나요?</summary>
+      <p>privacy.html, terms.html 등의 파일을 추가로 생성할 수 있습니다.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © <span id="year"></span> 사이트 이름. All rights reserved.
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
