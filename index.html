@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>你的品牌名｜清爽合规的社区/服务落地页</title>
-  <meta name="description" content="用更清晰、更克制的方式介绍你的服务：功能、规则、FAQ、联系入口。" />
+  <title>你的站点名｜清晰克制的单页落地页</title>
+  <meta name="description" content="用更清晰、克制的方式介绍你的页面：内容范围、功能入口、规则边界与常见问题。" />
   <style>
     :root{
       --bg:#0b1220;
@@ -27,12 +27,16 @@
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
-      margin:0; font-family:var(--font); color:var(--text); background: radial-gradient(1200px 700px at 20% 0%, rgba(98,168,255,.18), transparent 55%),
-      radial-gradient(900px 500px at 90% 10%, rgba(154,209,255,.12), transparent 50%),
-      linear-gradient(180deg, #070b14 0%, var(--bg) 30%, #070b14 100%);
+      margin:0; font-family:var(--font); color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(98,168,255,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(154,209,255,.12), transparent 50%),
+        linear-gradient(180deg, #070b14 0%, var(--bg) 30%, #070b14 100%);
     }
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -44,8 +48,8 @@
       height:64px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px; font-weight:700;
-      letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:.2px;
     }
     .logo{
       width:34px; height:34px; border-radius:12px;
@@ -54,21 +58,18 @@
     }
     .menu{ display:flex; gap:18px; align-items:center; }
     .menu a{
-      color:var(--muted); font-weight:600; font-size:14px;
+      color:var(--muted); font-weight:800; font-size:14px;
       padding:8px 10px; border-radius:12px;
     }
     .menu a:hover{ color:var(--text); background:rgba(255,255,255,.06); }
-    .cta{
-      display:flex; gap:10px; align-items:center;
-    }
+    .cta{ display:flex; gap:10px; align-items:center; }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:8px; padding:10px 14px; border-radius:14px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.06);
       color:var(--text);
-      font-weight:700; font-size:14px;
-      box-shadow: none;
+      font-weight:900; font-size:14px;
     }
     .btn:hover{ background: rgba(255,255,255,.09); }
     .btn.primary{
@@ -77,7 +78,9 @@
       color:#0a1020;
     }
     .btn.primary:hover{ filter:brightness(1.03); }
-    .hamburger{ display:none; width:42px; height:42px; border-radius:14px; border:1px solid var(--line);
+    .hamburger{
+      display:none; width:42px; height:42px; border-radius:14px;
+      border:1px solid var(--line);
       background: rgba(255,255,255,.06); color:var(--text);
     }
     .mobilePanel{
@@ -85,12 +88,12 @@
     }
     .mobilePanel a{
       display:block; padding:12px 10px; border-radius:14px; color:var(--muted);
-      font-weight:700;
+      font-weight:900;
     }
     .mobilePanel a:hover{ background: rgba(255,255,255,.06); color:var(--text); }
-    header.hero{
-      padding:72px 0 24px;
-    }
+
+    /* Hero */
+    header.hero{ padding:72px 0 24px; }
     .heroGrid{
       display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; align-items:stretch;
     }
@@ -114,7 +117,7 @@
       border:1px solid rgba(98,168,255,.35);
       background: rgba(98,168,255,.12);
       color: rgba(230,237,247,.92);
-      font-weight:800; font-size:13px;
+      font-weight:900; font-size:13px;
     }
     .h1{
       margin:14px 0 10px; font-size:44px; line-height:1.05;
@@ -126,7 +129,8 @@
     .check{
       display:flex; align-items:center; gap:10px;
       border:1px solid var(--line); background: rgba(255,255,255,.04);
-      padding:10px 12px; border-radius:14px; color:var(--muted); font-weight:700; font-size:13px;
+      padding:10px 12px; border-radius:14px; color:var(--muted);
+      font-weight:900; font-size:13px;
     }
     .dot{
       width:10px; height:10px; border-radius:999px; background: var(--ok);
@@ -140,29 +144,26 @@
       box-shadow: var(--shadow);
     }
     .statsTitle{ font-weight:900; margin:0 0 10px; letter-spacing:.2px; }
-    .stats{
-      display:grid; grid-template-columns:1fr; gap:12px;
-    }
     .stat{
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       border-radius: 16px;
       padding:14px 14px;
       display:flex; align-items:baseline; justify-content:space-between;
+      margin-bottom:12px;
     }
     .stat b{ font-size:20px; }
-    .stat span{ color:var(--muted); font-weight:800; font-size:13px; }
+    .stat span{ color:var(--muted); font-weight:900; font-size:13px; }
+
+    /* Sections */
     section{ padding:56px 0; }
     .sectionTitle{
       display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
       margin-bottom:18px;
     }
-    .sectionTitle h2{
-      margin:0; font-size:28px; letter-spacing:-.2px;
-    }
-    .sectionTitle p{
-      margin:0; color:var(--muted); max-width:520px; line-height:1.6;
-    }
+    .sectionTitle h2{ margin:0; font-size:28px; letter-spacing:-.2px; }
+    .sectionTitle p{ margin:0; color:var(--muted); max-width:520px; line-height:1.6; }
+
     .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
     .grid2{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
     .card{
@@ -178,8 +179,20 @@
       padding:7px 10px; border-radius:999px; border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       color:rgba(230,237,247,.86);
-      font-weight:800; font-size:12px;
+      font-weight:900; font-size:12px;
     }
+
+    .callout{
+      border:1px solid rgba(98,168,255,.25);
+      background: rgba(98,168,255,.10);
+      border-radius: var(--radius2);
+      padding:18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    }
+    .callout h3{ margin:0; font-size:18px; }
+    .callout p{ margin:6px 0 0; color:var(--muted); }
+
+    /* Rules */
     .ruleList{ display:grid; gap:12px; }
     .rule{
       display:flex; gap:12px;
@@ -195,7 +208,10 @@
       border:1px solid rgba(98,168,255,.35);
       display:flex; align-items:center; justify-content:center;
       font-weight:900;
+      flex: 0 0 auto;
     }
+
+    /* FAQ */
     details{
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
@@ -212,6 +228,8 @@
     .chev{ opacity:.8; transition:transform .15s ease; }
     details[open] .chev{ transform:rotate(180deg); }
     details .ans{ color:var(--muted); line-height:1.7; margin-top:10px; font-size:14px; }
+
+    /* Footer */
     .footer{
       padding:32px 0 44px; border-top:1px solid var(--line);
       color:var(--muted);
@@ -220,18 +238,10 @@
       display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;
     }
     .links{ display:flex; gap:12px; flex-wrap:wrap; }
-    .links a{ color:var(--muted); font-weight:800; font-size:13px; }
+    .links a{ color:var(--muted); font-weight:900; font-size:13px; }
     .links a:hover{ color:var(--text); }
     .small{ font-size:13px; line-height:1.7; }
-    .callout{
-      border:1px solid rgba(98,168,255,.25);
-      background: rgba(98,168,255,.10);
-      border-radius: var(--radius2);
-      padding:18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
-    }
-    .callout h3{ margin:0; font-size:18px; }
-    .callout p{ margin:6px 0 0; color:var(--muted); }
+
     @media (max-width: 980px){
       .heroGrid{ grid-template-columns:1fr; }
       .grid3{ grid-template-columns:1fr; }
@@ -251,20 +261,21 @@
       <div class="nav">
         <a class="brand" href="#top">
           <span class="logo" aria-hidden="true"></span>
-          <span>你的品牌名</span>
+          <span>你的站点名</span>
         </a>
 
         <nav class="menu" aria-label="主导航">
           <a href="#about">介绍</a>
           <a href="#features">功能</a>
-          <a href="#community">社区</a>
+          <a href="#rules">规范</a>
           <a href="#faq">FAQ</a>
         </nav>
 
         <div class="cta">
           <a class="btn" href="#features">了解更多</a>
-          <!-- 把这里换成你的跳转链接：例如你的下单页/群/表单 -->
-          <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">立即访问</a>
+
+          <!-- ✅ 把这里换成你的入口链接 -->
+          <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">立即进入</a>
         </div>
 
         <button class="hamburger" id="hamburger" aria-label="打开菜单">☰</button>
@@ -273,9 +284,9 @@
       <div class="mobilePanel" id="mobilePanel">
         <a href="#about">介绍</a>
         <a href="#features">功能</a>
-        <a href="#community">社区</a>
+        <a href="#rules">规范</a>
         <a href="#faq">FAQ</a>
-        <a href="https://example.com" target="_blank" rel="noopener">立即访问</a>
+        <a href="https://example.com" target="_blank" rel="noopener">立即进入</a>
       </div>
     </div>
   </div>
@@ -285,37 +296,37 @@
     <div class="wrap">
       <div class="heroGrid">
         <div class="heroCard">
-          <div class="tag">📌 清爽、克制、易理解</div>
-          <h1 class="h1">把你的服务信息<br/>更“安静”地讲清楚</h1>
+          <div class="tag">📌 信息清晰 · 表达克制 · 入口明确</div>
+          <h1 class="h1">把你要做的事<br/>讲得更清楚一点</h1>
           <p class="lead">
-            这一页用于展示：你提供什么、适合谁、有什么功能、如何使用、有哪些规则与 FAQ。
-            风格参考 djiazhib.com：少夸张词、重说明、看起来更稳更可信。
+            这是一个单页说明型落地页：用固定结构把「你提供什么」「适合谁」「如何开始」「边界与规则」一次讲明白，
+            让用户更少猜测、更少来回问。
           </p>
 
           <div class="heroActions">
-            <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">现在就去看看</a>
-            <a class="btn" href="#about">使用方式/介绍</a>
+            <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">现在就进入</a>
+            <a class="btn" href="#about">先看介绍</a>
           </div>
 
           <div class="checks">
-            <div class="check"><span class="dot"></span> 说明清晰、结构简洁</div>
-            <div class="check"><span class="dot"></span> 移动端/PC 自适应</div>
-            <div class="check"><span class="dot"></span> 可替换你的文案与链接</div>
+            <div class="check"><span class="dot"></span> 一页讲清楚核心信息</div>
+            <div class="check"><span class="dot"></span> 手机/电脑自适应</div>
+            <div class="check"><span class="dot"></span> 规则 + FAQ 降低沟通</div>
           </div>
         </div>
 
         <aside class="statsCard" aria-label="数据概览">
-          <p class="statsTitle">一眼看懂</p>
-          <div class="stats">
-            <div class="stat"><span>内容条目</span><b>1,200+</b></div>
-            <div class="stat"><span>活跃用户</span><b>3,500+</b></div>
-            <div class="stat"><span>日均更新</span><b>50+</b></div>
-          </div>
-          <div style="height:14px"></div>
+          <p class="statsTitle">概览数据</p>
+
+          <!-- ✅ 这些数字你自己换成真实的 -->
+          <div class="stat"><span>内容条目</span><b>1,000+</b></div>
+          <div class="stat"><span>累计访问</span><b>30k+</b></div>
+          <div class="stat"><span>近期更新</span><b>每周</b></div>
+
           <div class="card" style="padding:14px;">
-            <h3 style="margin:0 0 6px;">你可以把这里改成：</h3>
+            <h3 style="margin:0 0 6px;">建议</h3>
             <p style="margin:0;color:var(--muted);line-height:1.7;font-size:14px;">
-              例如：订单数、服务覆盖、响应时间、用户评价等（尽量真实、可解释）。
+              数据不要夸张，保持“可解释”，会更像稳定运营的站点。
             </p>
           </div>
         </aside>
@@ -323,123 +334,94 @@
     </div>
   </header>
 
-  <!-- Overview -->
-  <section>
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>概览</h2>
-        <p>用更“耐看”的方式呈现：主题、内容范围、适合人群、入口。</p>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>清晰的主题分区</h3>
-          <p>把信息按“你真正提供的内容”拆分成几个板块，用户不需要猜。</p>
-          <div class="pillRow">
-            <span class="pill">说明型文案</span>
-            <span class="pill">入口明确</span>
-            <span class="pill">少噱头</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>更像“官方说明页”</h3>
-          <p>克制表达 + FAQ + 规则，让页面看起来更稳更可信。</p>
-          <div class="pillRow">
-            <span class="pill">规则与边界</span>
-            <span class="pill">常见问题</span>
-            <span class="pill">联系方式</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>移动端体验优先</h3>
-          <p>导航、按钮、卡片布局都按手机阅读习惯优化，打开就能看懂。</p>
-          <div class="pillRow">
-            <span class="pill">自适应</span>
-            <span class="pill">轻量</span>
-            <span class="pill">加载快</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
+  <!-- About -->
   <section id="about">
     <div class="wrap">
       <div class="sectionTitle">
-        <h2>介绍</h2>
-        <p>把“你是谁、做什么、为谁服务”讲清楚。下面三栏你替换成你的真实定位即可。</p>
+        <h2>这页是什么</h2>
+        <p>用三块说明你服务的对象、提供的内容、以及大致边界。</p>
       </div>
 
       <div class="grid3">
         <div class="card">
-          <h3>面向 A 类用户</h3>
-          <p>用几句话说明：他们遇到什么问题，你提供什么帮助，怎么开始。</p>
+          <h3>给第一次来的用户</h3>
+          <p>先告诉他这里能解决什么问题，建议从哪里开始，避免把信息堆在一起。</p>
           <div class="pillRow">
-            <span class="pill">场景 1</span><span class="pill">场景 2</span><span class="pill">场景 3</span>
+            <span class="pill">入门指引</span>
+            <span class="pill">减少试错</span>
+            <span class="pill">路径清晰</span>
           </div>
         </div>
+
         <div class="card">
-          <h3>面向 B 类用户</h3>
-          <p>强调信息结构、流程、规则，让用户更放心、更少来回问。</p>
+          <h3>给想快速定位的人</h3>
+          <p>用分类与模块化结构，把信息按主题拆开，让用户更快找到对应入口。</p>
           <div class="pillRow">
-            <span class="pill">流程说明</span><span class="pill">注意事项</span><span class="pill">支持方式</span>
+            <span class="pill">分类</span>
+            <span class="pill">模块</span>
+            <span class="pill">索引</span>
           </div>
         </div>
+
         <div class="card">
-          <h3>面向 C 类用户</h3>
-          <p>如果你是社区/服务/产品，把边界写清楚：能做什么、不能做什么。</p>
+          <h3>给重视可信度的人</h3>
+          <p>把规则与边界写清楚，让页面更像“长期运营”的说明页，而不是短期广告。</p>
           <div class="pillRow">
-            <span class="pill">范围</span><span class="pill">边界</span><span class="pill">更新</span>
+            <span class="pill">边界明确</span>
+            <span class="pill">更可信</span>
+            <span class="pill">易维护</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- Features -->
   <section id="features">
     <div class="wrap">
       <div class="sectionTitle">
-        <h2>功能</h2>
-        <p>参考 djiazhib.com 的“易理解”风格：少炫技，多说明“用户能得到什么”。</p>
+        <h2>你能获得什么</h2>
+        <p>用 2×2 结构说明核心能力：入口、内容、指引、支持方式。</p>
       </div>
 
       <div class="grid2">
         <div class="card">
-          <h3>功能点 1：主题分类</h3>
-          <p>例如：按用途/步骤/常见问题分类，用户能快速找到答案。</p>
+          <h3>清晰入口</h3>
+          <p>把最重要的“下一步动作”放到按钮里，用户不用翻半天。</p>
           <div class="pillRow">
-            <span class="pill">分类清晰</span>
-            <span class="pill">可搜索</span>
-            <span class="pill">易维护</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>功能点 2：说明与指引</h3>
-          <p>把“怎么用、注意啥、常见坑”写成标准化步骤，减少咨询成本。</p>
-          <div class="pillRow">
-            <span class="pill">步骤化</span>
-            <span class="pill">可复制</span>
-            <span class="pill">少争议</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>功能点 3：入口与联系</h3>
-          <p>提供一个明确入口（按钮/二维码/表单），再给一个“备用联系方式”。</p>
-          <div class="pillRow">
-            <span class="pill">入口明确</span>
-            <span class="pill">多通道</span>
+            <span class="pill">主入口</span>
+            <span class="pill">备用入口</span>
             <span class="pill">可追踪</span>
           </div>
         </div>
+
         <div class="card">
-          <h3>功能点 4：规则与边界</h3>
-          <p>写清楚允许/不允许内容、隐私、投诉方式，更像“可长期运营”的页面。</p>
+          <h3>结构化内容</h3>
+          <p>按主题整理：新手、进阶、问题排查、更新说明等，减少重复咨询。</p>
           <div class="pillRow">
-            <span class="pill">边界清晰</span>
-            <span class="pill">降低风险</span>
-            <span class="pill">更可信</span>
+            <span class="pill">主题分区</span>
+            <span class="pill">可扩展</span>
+            <span class="pill">更新清晰</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>操作指引</h3>
+          <p>把流程写成步骤：做什么、注意什么、遇到问题怎么处理。</p>
+          <div class="pillRow">
+            <span class="pill">步骤化</span>
+            <span class="pill">少误解</span>
+            <span class="pill">可复用</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>支持与说明</h3>
+          <p>告诉用户什么时候能联系到你、通过什么方式、以及响应范围。</p>
+          <div class="pillRow">
+            <span class="pill">联系方式</span>
+            <span class="pill">响应时间</span>
+            <span class="pill">范围说明</span>
           </div>
         </div>
       </div>
@@ -447,45 +429,47 @@
       <div style="height:18px"></div>
       <div class="callout">
         <div>
-          <h3>想把“立即访问”按钮指向你的页面？</h3>
-          <p>把顶部与移动菜单里的 <b>https://example.com</b> 换成你的真实链接即可。</p>
+          <h3>准备好入口链接了吗？</h3>
+          <p>把页面里的 <b>https://example.com</b> 改成你的实际入口，就能直接用。</p>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="#faq">先看 FAQ</a>
-          <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">立即访问</a>
+          <a class="btn primary" href="https://example.com" target="_blank" rel="noopener">立即进入</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMMUNITY -->
-  <section id="community">
+  <!-- Rules -->
+  <section id="rules">
     <div class="wrap">
       <div class="sectionTitle">
-        <h2>社区/使用规范</h2>
-        <p>这部分是 djiazhib.com 的“稳重感”核心：规则写清楚，页面更像可长期运营的产品。</p>
+        <h2>使用规范与边界</h2>
+        <p>把“允许/不允许”“隐私”“争议处理”写清楚，会显得更稳。</p>
       </div>
 
       <div class="ruleList">
         <div class="rule">
           <div class="num">1</div>
           <div>
-            <b>尊重表达</b>
-            <div class="small">避免攻击、辱骂、引战。用“描述问题 + 给出信息”的方式交流。</div>
+            <b>尊重交流</b>
+            <div class="small">保持友好表达，避免辱骂/引战；尽量提供有效信息帮助定位问题。</div>
           </div>
         </div>
+
         <div class="rule">
           <div class="num">2</div>
           <div>
-            <b>主题相关</b>
-            <div class="small">内容围绕本页面服务主题；过度广告、无关内容建议移除或折叠。</div>
+            <b>内容相关</b>
+            <div class="small">优先讨论与本站主题相关内容；广告与无关信息可能会被折叠或移除。</div>
           </div>
         </div>
+
         <div class="rule">
           <div class="num">3</div>
           <div>
             <b>隐私与安全</b>
-            <div class="small">不要公开敏感信息（电话、身份证、账号密码等）。如需联系，走私信或表单。</div>
+            <div class="small">不要公开敏感信息（账号、验证码、个人资料等）；联系请走私信/表单/邮箱。</div>
           </div>
         </div>
       </div>
@@ -497,40 +481,28 @@
     <div class="wrap">
       <div class="sectionTitle">
         <h2>常见问题</h2>
-        <p>用“短问题 + 清晰答案”写法，尽量不夸张，尽量可验证。</p>
+        <p>用短问题 + 直给答案，减少反复沟通成本。</p>
       </div>
 
       <div class="grid2">
         <details>
-          <summary>
-            这个页面可以免费用吗？
-            <span class="chev">▾</span>
-          </summary>
-          <div class="ans">可以。它是纯静态页面，你改完文案和链接后，上传到服务器或 GitHub Pages 就能用。</div>
+          <summary>这页适合做什么用途？ <span class="chev">▾</span></summary>
+          <div class="ans">适合做“说明型落地页”：介绍服务/社区/资源集合，提供入口、规则、FAQ 和联系信息。</div>
         </details>
 
         <details>
-          <summary>
-            我只会一点点前端，怎么改最关键的地方？
-            <span class="chev">▾</span>
-          </summary>
-          <div class="ans">优先改：顶部品牌名、主标题、两处“立即访问”链接、统计数字、联系方式邮箱/二维码区域。</div>
+          <summary>我怎么部署到 GitHub Pages？ <span class="chev">▾</span></summary>
+          <div class="ans">把文件命名为 <b>index.html</b> 放在仓库根目录，然后 Settings → Pages 选择 main / root。</div>
         </details>
 
         <details>
-          <summary>
-            能做成多页面吗？
-            <span class="chev">▾</span>
-          </summary>
-          <div class="ans">可以：把“隐私政策/条款/免责声明”做成单独 HTML，然后在页脚链接过去。</div>
+          <summary>我能加二维码或图片吗？ <span class="chev">▾</span></summary>
+          <div class="ans">可以。上传图片到仓库（如 images/），然后在页面里用 &lt;img&gt; 引入即可。</div>
         </details>
 
         <details>
-          <summary>
-            能加一个“表单收集咨询”吗？
-            <span class="chev">▾</span>
-          </summary>
-          <div class="ans">可以接第三方表单（如问卷/表单工具）或你自己后端。按钮链接直接指向表单地址最简单。</div>
+          <summary>能做成多页（隐私/条款）吗？ <span class="chev">▾</span></summary>
+          <div class="ans">可以新建 privacy.html / terms.html / disclaimer.html，再在页脚链接过去。</div>
         </details>
       </div>
     </div>
@@ -543,11 +515,11 @@
         <div>
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
             <span class="logo" aria-hidden="true"></span>
-            <b style="color:var(--text);">你的品牌名</b>
+            <b style="color:var(--text);">你的站点名</b>
           </div>
           <div class="small">
             联系邮箱：<a href="mailto:contact@example.com">contact@example.com</a><br/>
-            工作时间：周一至周五 10:00 - 17:00
+            响应时间：工作日 10:00 - 17:00（节假日顺延）
           </div>
         </div>
 
@@ -560,25 +532,16 @@
       </div>
 
       <div style="height:14px"></div>
-      <div class="small">© <span id="year"></span> 你的品牌名。All rights reserved.</div>
+      <div class="small">© <span id="year"></span> 你的站点名。All rights reserved.</div>
     </div>
   </footer>
 
   <script>
-    // 年份
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // 移动端菜单
     const hamburger = document.getElementById('hamburger');
     const panel = document.getElementById('mobilePanel');
-    hamburger?.addEventListener('click', () => {
-      panel.classList.toggle('show');
-    });
-
-    // 点击移动菜单后自动收起
-    panel?.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') panel.classList.remove('show');
-    });
+    hamburger?.addEventListener('click', () => panel.classList.toggle('show'));
+    panel?.addEventListener('click', (e) => { if (e.target.tagName === 'A') panel.classList.remove('show'); });
   </script>
 </body>
 </html>
